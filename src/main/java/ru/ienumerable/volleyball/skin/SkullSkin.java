@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import org.apache.commons.codec.binary.Base64;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -48,7 +49,7 @@ public class SkullSkin {
         ItemStack skull = getSkullByUrl(url);
         ItemMeta meta = skull.getItemMeta();
 
-        meta.setDisplayName(name);
+        meta.setDisplayName(ChatColor.RESET + name);
 
         PersistentDataContainer container = meta.getPersistentDataContainer();
         container.set(Volleyball.getBallKey(), PersistentDataType.STRING, id);
