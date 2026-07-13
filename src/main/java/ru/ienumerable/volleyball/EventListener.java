@@ -6,6 +6,7 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -134,10 +135,11 @@ public class EventListener implements Listener {
                 controller.throwBall();
                 return;
             }
+            ThrowController.throwBall(player, getPunchPower(player));
 
-            boolean isCanceled = ThrowController.throwBall(player, getPunchPower(player));
-
-            event.setCancelled(isCanceled);
+            // This is not neccesary. Just breaks other plugins.
+            // boolean isCanceled = ThrowController.throwBall(player, getPunchPower(player));
+            // event.setCancelled(isCanceled);
         }
     }
 
