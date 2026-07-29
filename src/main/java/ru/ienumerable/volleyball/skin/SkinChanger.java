@@ -94,7 +94,12 @@ public class SkinChanger {
     }
 
     private static void selectHandler(Player player, ClickInformation info){
-
+        ItemStack item = player.getInventory().getItemInMainHand();
+        if (!item.hasItemMeta() || !SkullSkin.isContainSkin(item)) {
+            player.sendMessage(ChatColor.RED + "Возьмите мяч в руки, чтобы сменить скин!");
+            info.getClickedMenu().close(player);
+            return;
+        }
         SkullSkin newSkin = SkullSkin.getSkin(info.getClickedSlot().getItem(player));
         player.getInventory().setItemInMainHand(newSkin.getItem());
         info.getClickedMenu().close(player);
